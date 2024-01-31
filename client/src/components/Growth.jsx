@@ -61,21 +61,24 @@ const Growth = ({ Title, boxHeightPercentage }) => {
 
   return (
     <div
-      className="goals"
+      className="growth"
       style={{
         display: "flex",
-        flex: 1.5,
+        flex: 1,
         flexDirection: "column",
         height: boxHeightPercentage,
         backgroundColor: "white",
         borderRadius: "16px",
-        padding: "30px",
-        paddingBottom: "5px",
+        paddingLeft: "30px",
+        paddingRight: "30px",
+        paddingTop: "30px",
         marginLeft: "12px",
-        marginBottom: "8px",
+        marginBottom: "7px",
         fontFamily: "Acumin-RPro",
         position: "relative",
+        width: 1,
         fontSize: "24px",
+        minWidth: "400px",
       }}
     >
       <div
@@ -256,8 +259,11 @@ const Growth = ({ Title, boxHeightPercentage }) => {
           </div>
         )}
       </div>
-      {loading && <p>Loading...</p>}
-      {!loading && <Graph dataset={datasets[selectedDataset]} />}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <Graph dataset={datasets[selectedDataset]} />
+      )}
     </div>
   );
 };

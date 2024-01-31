@@ -64,6 +64,7 @@ const Customers = ({
           width: 1,
           position: "relative",
           marginBottom: "8px",
+          minWidth: "400px",
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between" }}>

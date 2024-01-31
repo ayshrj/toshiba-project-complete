@@ -52,7 +52,8 @@ function downsampleData(data, timeUnit) {
   for (const key in groupedData) {
     const currentProft = groupedData[key].sum / groupedData[key].count;
     result.push({
-      Timestamp: timeUnit === "day" ? key : key.slice(0, -1),
+      Timestamp:
+        timeUnit === "day" || timeUnit === "year" ? key : key.slice(0, -1),
       ProfitPercentage: currentProft,
     });
     delete groupedData[key].sum;
