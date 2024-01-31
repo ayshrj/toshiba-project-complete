@@ -16,6 +16,7 @@ import {
   IconSettings2,
   IconChevronLeft,
   IconChevronRight,
+  IconChevronDown,
 } from "@tabler/icons-react";
 import WindowHeightCalculator from "./Utilities/WindowHeightCalculator";
 import "./Menu.css";
@@ -117,6 +118,10 @@ const Menu = ({ menuIsCollapsed, setMenuIsCollapsed }) => {
           {!menuIsCollapsed && (
             <div className="left-side-button-label">Customers</div>
           )}
+          <IconChevronDown
+            className="left-side-button-icon"
+            style={{ marginLeft: "auto" }}
+          />
         </div>
         <div className="left-side-button">
           <IconClipboardData
