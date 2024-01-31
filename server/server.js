@@ -2,6 +2,9 @@ const http = require("http");
 const fs = require("fs");
 const axios = require("axios");
 const Papa = require("papaparse");
+require("dotenv").config();
+
+const port = process.env.PORT || 5000;
 
 const csvFileUrl =
   "https://raw.githubusercontent.com/ayshrj/delete-asap/main/dataset.csv";
@@ -118,8 +121,6 @@ const server = http.createServer((req, res) => {
     res.end("Not Found");
   }
 });
-
-const port = 3000;
 
 server.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
