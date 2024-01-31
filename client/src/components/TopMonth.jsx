@@ -1,6 +1,6 @@
 import React from "react";
 
-const TopMonth = ({ Title, boxHeightPercentage }) => {
+const TopMonth = ({ Title, topMonth, boxHeightPercentage }) => {
   return (
     <div
       className="customers"
@@ -27,8 +27,12 @@ const TopMonth = ({ Title, boxHeightPercentage }) => {
           marginTop: "auto",
         }}
       >
-        <div style={{ fontSize: "20px", color: "#734A00" }}>{"Novemeber"}</div>
-        <div style={{ fontSize: "18px", color: "#FFA500" }}>{"2019"}</div>
+        <div style={{ fontSize: "20px", color: "#734A00" }}>
+          {topMonth.month}
+        </div>
+        <div style={{ fontSize: "18px", color: "#FFA500" }}>
+          {topMonth.year}
+        </div>
       </div>
     </div>
   );

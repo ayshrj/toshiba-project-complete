@@ -1,6 +1,6 @@
 import React from "react";
 
-const TopYear = ({ Title, boxHeightPercentage }) => {
+const TopYear = ({ Title, topYear, boxHeightPercentage }) => {
   return (
     <div
       className="customers"
@@ -27,7 +27,7 @@ const TopYear = ({ Title, boxHeightPercentage }) => {
           marginTop: "auto",
         }}
       >
-        <div style={{ fontSize: "30px", color: "#734A00" }}>{2016}</div>
+        <div style={{ fontSize: "30px", color: "#734A00" }}>{topYear.year}</div>
         <div style={{ fontSize: "12px", color: "#454545" }}>
           {"96k sold so far"}
         </div>

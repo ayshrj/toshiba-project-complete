@@ -66,6 +66,24 @@ const topBuyer = {
   dateCreated: "2023-03-22",
 };
 
+const topMonth = {
+  month: "November",
+  year: "2016",
+};
+
+const topYear = {
+  year: "2016",
+};
+
 const quarterGoal = 84;
 
-export { customerData, messages, topStates, newDeals, topBuyer, quarterGoal };
+export {
+  customerData,
+  messages,
+  topStates,
+  newDeals,
+  topBuyer,
+  quarterGoal,
+  topMonth,
+  topYear,
+};
