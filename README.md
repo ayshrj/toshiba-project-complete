@@ -19,11 +19,10 @@ Make sure to install the following dependencies for the client (frontend):
 - [react-dom](https://reactjs.org/docs/react-dom.html) - Entry point to the DOM and server renderers for React
 - [recharts](https://recharts.org/) - Charting library for React applications
 
-To install, run the following commands:
+To install the frontend dependencies, follow the steps below in the /client folder:
 
 ```bash
-npx create vite@latest client -- --template react
-cd client
+npx create vite@latest . -- --template react
 npm install tabler/icons-react axios react react-dom recharts
 ```
 
@@ -40,7 +39,7 @@ Make sure to install the following dependencies for the server (backend):
 
 ### Installation Steps
 
-To install the backend dependencies, follow the steps below:
+To install the backend dependencies, follow the steps below in the /server folder:
 
 ```bash
 npm install axios cors dotenv express papaparse node
