@@ -114,5 +114,3 @@ The backend server pulls a dataset in CSV format from a raw GitHub link, uses `p
 
 - The project is mostly static except for the Growth component, which pulls data from the backend hosted on render.com.
 - The static data is stored in `DashboardInfo.jsx`, acting as a pseudo-database for easy future implementation of a dynamic database.
-
-Feel free to explore the provided deployment links and customize the project according to your needs. If you have any questions or encounter issues, please refer to the provided documentation or contact the project contributors.
