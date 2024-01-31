@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Papa from "papaparse";
 import {
   AreaChart,
   Area,
@@ -12,11 +11,11 @@ import {
 
 const Graph = ({ dataset }) => {
   const tooltipStyle = {
-    fontSize: "12px", // Adjust the tooltip font size as needed
+    fontSize: "12px",
   };
 
   const axisLabelStyle = {
-    fontSize: "10px", // Adjust the axis label font size as needed
+    fontSize: "10px",
   };
 
   const formatProfitPercentage = (value) => {

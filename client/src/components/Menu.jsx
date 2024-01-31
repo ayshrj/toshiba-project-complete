@@ -99,43 +99,76 @@ const Menu = ({ menuIsCollapsed, setMenuIsCollapsed }) => {
               color: "#FFA500",
               paddingTop: menuIsCollapsed ? "41px" : "",
             }}
+            onClick={() => {
+              setMenuIsCollapsed(false);
+            }}
           />
           {!menuIsCollapsed && (
             <div className="left-side-button-label">Dashboard</div>
           )}
         </div>
         <div className="left-side-button">
-          <IconUsers className="left-side-button-icon" />
+          <IconUsers
+            className="left-side-button-icon"
+            onClick={() => {
+              setMenuIsCollapsed(false);
+            }}
+          />
           {!menuIsCollapsed && (
             <div className="left-side-button-label">Customers</div>
           )}
         </div>
         <div className="left-side-button">
-          <IconClipboardData className="left-side-button-icon" />
+          <IconClipboardData
+            className="left-side-button-icon"
+            onClick={() => {
+              setMenuIsCollapsed(false);
+            }}
+          />
           {!menuIsCollapsed && (
             <div className="left-side-button-label">All reports</div>
           )}
         </div>
         <div className="left-side-button">
-          <IconWorld className="left-side-button-icon" />
+          <IconWorld
+            className="left-side-button-icon"
+            onClick={() => {
+              setMenuIsCollapsed(false);
+            }}
+          />
           {!menuIsCollapsed && (
             <div className="left-side-button-label">Geography</div>
           )}
         </div>
         <div className="left-side-button">
-          <IconMessageCircle2 className="left-side-button-icon" />
+          <IconMessageCircle2
+            className="left-side-button-icon"
+            onClick={() => {
+              setMenuIsCollapsed(false);
+            }}
+          />
           {!menuIsCollapsed && (
             <div className="left-side-button-label">Conversations</div>
           )}
         </div>
         <div className="left-side-button">
-          <IconBasketCheck className="left-side-button-icon" />
+          <IconBasketCheck
+            className="left-side-button-icon"
+            onClick={() => {
+              setMenuIsCollapsed(false);
+            }}
+          />
           {!menuIsCollapsed && (
             <div className="left-side-button-label">Deals</div>
           )}
         </div>
         <div className="left-side-button">
-          <IconDatabaseExport className="left-side-button-icon" />
+          <IconDatabaseExport
+            className="left-side-button-icon"
+            onClick={() => {
+              setMenuIsCollapsed(false);
+            }}
+          />
           {!menuIsCollapsed && (
             <div className="left-side-button-label">Export</div>
           )}
@@ -208,7 +241,12 @@ const Menu = ({ menuIsCollapsed, setMenuIsCollapsed }) => {
           )}
         </div>
         <div className="left-side-button">
-          <IconSettings2 className="left-side-button-icon" />
+          <IconSettings2
+            className="left-side-button-icon"
+            onClick={() => {
+              setMenuIsCollapsed(false);
+            }}
+          />
           {!menuIsCollapsed && (
             <div className="left-side-button-label">Settings</div>
           )}
@@ -217,6 +255,9 @@ const Menu = ({ menuIsCollapsed, setMenuIsCollapsed }) => {
           <IconLogout
             className="left-side-button-icon"
             style={{ color: "#B01212" }}
+            onClick={() => {
+              setMenuIsCollapsed(false);
+            }}
           />
           {!menuIsCollapsed && (
             <div

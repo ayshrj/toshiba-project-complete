@@ -36,7 +36,6 @@ const Growth = ({ Title, boxHeightPercentage }) => {
         }
 
         const jsonData = response.data.data;
-        console.log(jsonData);
         setDatasets((prevDatasets) => ({
           ...prevDatasets,
           [selectedDataset]: jsonData,

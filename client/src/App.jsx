@@ -18,6 +18,7 @@ import {
   topStates,
   newDeals,
   topBuyer,
+  quarterGoal,
 } from "./components/Utilities/DashboardInfo";
 
 const firstRowHeightPercentage = 0.18;
@@ -78,7 +79,7 @@ const App = () => {
           />
           <Goals
             Title={"Quarter goal"}
-            Percentage={84}
+            Percentage={quarterGoal}
             BottomButton={"All goals"}
             boxHeightPercentage={windowHeight * firstRowHeightPercentage}
           />
