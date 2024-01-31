@@ -1,13 +1,15 @@
-const http = require("http");
-const fs = require("fs");
+const express = require("express");
 const axios = require("axios");
 const Papa = require("papaparse");
 require("dotenv").config();
-
+const cors = require("cors");
+const app = express();
 const port = process.env.PORT || 5000;
 
 const csvFileUrl =
   "https://raw.githubusercontent.com/ayshrj/delete-asap/main/dataset.csv";
+
+app.use(cors());
 
 function downsampleData(data, timeUnit) {
   const groupedData = {};
@@ -61,14 +63,10 @@ function downsampleData(data, timeUnit) {
   return result;
 }
 
-const server = http.createServer((req, res) => {
-  const urlParts = req.url.split("/");
-  const timeUnit = urlParts[2];
+app.get("/json/:timeUnit", (req, res) => {
+  const timeUnit = req.params.timeUnit;
 
-  if (
-    urlParts[1] === "json" &&
-    ["day", "week", "month", "year"].includes(timeUnit)
-  ) {
+  if (["day", "week", "month", "year"].includes(timeUnit)) {
     axios
       .get(csvFileUrl)
       .then((response) => {
@@ -95,33 +93,25 @@ const server = http.createServer((req, res) => {
                 break;
             }
 
-            const jsonString = JSON.stringify(downsampledData, null, 2);
-
-            res.writeHead(200, {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
+            res.status(200).json({
+              data: downsampledData,
             });
-
-            res.end(jsonString);
           },
           error: (err) => {
             console.error("Error parsing CSV:", err);
-            res.writeHead(500, { "Content-Type": "text/plain" });
-            res.end("Internal Server Error");
+            res.status(500).send("Internal Server Error");
           },
         });
       })
       .catch((error) => {
         console.error("Error fetching CSV file:", error);
-        res.writeHead(500, { "Content-Type": "text/plain" });
-        res.end("Internal Server Error");
+        res.status(500).send("Internal Server Error");
       });
   } else {
-    res.writeHead(404, { "Content-Type": "text/plain" });
-    res.end("Not Found");
+    res.status(404).send("Not Found");
   }
 });
 
-server.listen(port, () => {
-  console.log(`Server running`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });

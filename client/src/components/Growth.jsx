@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Graph from "./Utilities/Graph";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
+import axios from "axios";
 
 const Growth = ({ Title, boxHeightPercentage }) => {
   const storedDataset = localStorage.getItem("selectedDataset") || "month";
@@ -26,14 +27,15 @@ const Growth = ({ Title, boxHeightPercentage }) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
+        const response = await axios.get(
           `http://localhost:3000/json/${selectedDataset}`
         );
-        if (!response.ok) {
-          throw new Error(`Failed to fetch data. Status: ${response.status}`);
+
+        if (!response || !response.data) {
+          throw new Error("Failed to fetch data.");
         }
 
-        const jsonData = await response.json();
+        const jsonData = response.data.data;
         console.log(jsonData);
         setDatasets((prevDatasets) => ({
           ...prevDatasets,
@@ -48,7 +50,6 @@ const Growth = ({ Title, boxHeightPercentage }) => {
 
     fetchData();
   }, [selectedDataset]);
-
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
