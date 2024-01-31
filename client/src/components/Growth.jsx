@@ -28,7 +28,7 @@ const Growth = ({ Title, boxHeightPercentage }) => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `http://localhost:3000/json/${selectedDataset}`
+          `https://toshiba-project-backend.onrender.com/json/${selectedDataset}`
         );
 
         if (!response || !response.data) {
