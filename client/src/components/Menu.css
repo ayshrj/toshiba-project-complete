@@ -1,0 +1,24 @@
+.left-side-container{
+    transition: width 0.5s ease-in-out;
+}
+
+.left-side-button{
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.left-side-button-icon{
+    color: #7D7D7D;
+    width: 18px;
+    height: 18px;
+}
+
+.left-side-button-label{
+    padding-left: 10px; 
+    transform: translateY(2px);
+    color: #131313;
+}

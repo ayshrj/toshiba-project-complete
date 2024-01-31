@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Acumin-BdItPro';
+    src: url('./Acumin-BdItPro.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Acumin-BdPro';
+    src: url('./Acumin-BdPro.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Acumin-ItPro';
+    src: url('./Acumin-ItPro.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Acumin-RPro';
+    src: url('./Acumin-RPro.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
