@@ -85,9 +85,9 @@ const TopMonth = ({ Title, boxHeightPercentage }) => {
       <div style={{ fontSize: "15px", color: "#7D7D7D" }}>{Title}</div>
       {topMonthExtracted === null ? (
         <>
-          <p>Loading...</p>
+          <p style={{ marginBottom: "2px" }}>Loading...</p>
           {loadingTime > 10 && (
-            <p style={{ fontSize: "14px" }}>
+            <p style={{ fontSize: "10px" }}>
               {
                 "(This may take a moment, as my backend is hosted on the free version of render.com, It spin down after periods of inactivity)"
               }

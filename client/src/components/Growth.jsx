@@ -282,9 +282,9 @@ const Growth = ({ Title, boxHeightPercentage }) => {
       </div>
       {loading ? (
         <>
-          <p>Loading...</p>
+          <p style={{ marginBottom: "2px" }}>Loading...</p>
           {loadingTime > 10 && (
-            <p style={{ fontSize: "14px" }}>
+            <p style={{ fontSize: "10px" }}>
               {
                 "(This may take a moment, as my backend is hosted on the free version of render.com, It spin down after periods of inactivity)"
               }
