@@ -159,7 +159,7 @@ The function returns an array of objects with downsampled data, each containing 
 ];
 ```
 
-### Note
+## Note
 
 - The project is mostly static except for the Growth component, which pulls data from the backend hosted on render.com.
 - The static data is stored in `DashboardInfo.jsx`, acting as a pseudo-database for easy future implementation of a dynamic database.
