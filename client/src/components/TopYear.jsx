@@ -17,7 +17,7 @@ const TopYear = ({ Title, boxHeightPercentage }) => {
         }
 
         const jsonData = response.data.data;
-        const extractedYear = parseInt(jsonData.Timestamp[0]);
+        const extractedYear = jsonData.Timestamp;
         setTopYearExtracted({
           year: extractedYear,
           profit: response.data.data.ProfitPercentage.toFixed(2),
