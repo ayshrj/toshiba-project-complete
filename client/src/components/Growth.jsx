@@ -281,7 +281,7 @@ const Growth = ({ Title, boxHeightPercentage }) => {
           {loadingTime > 10 && (
             <p style={{ fontSize: "14px" }}>
               {
-                "(This may take a moment, as our backend is hosted on the free version of render.com)"
+                "(This may take a moment, as my backend is hosted on the free version of render.com)"
               }
             </p>
           )}
