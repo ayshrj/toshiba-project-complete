@@ -110,16 +110,16 @@ The frontend consists of 11 React components:
 
 The backend server pulls a dataset in CSV format from a raw GitHub link, uses `papaparse` to parse the CSV to JSON, and serves the data to the frontend. The server includes a function called `downsampleData(data, timeUnit)` for downsampling data by grouping it based on the specified time unit and calculating the mean. Proper error handling is implemented to provide accurate status responses.
 
-# Function: `downsampleData`
+## Function: `downsampleData`
 
 This JavaScript function takes an array of data points with timestamps and profit percentages and groups them based on a specified time unit. The purpose of this function is to downsample the data, aggregating profit percentages over specified time intervals.
 
-## Parameters
+### Parameters
 
 - `data`: An array of data points, where each entry should have a `Timestamp` and `ProfitPercentage` property.
 - `timeUnit`: A string specifying the time unit for grouping the data. Supported values are "day," "month," and "year."
 
-## Example Usage
+### Example Usage
 
 ```javascript
 const data = [
@@ -131,26 +131,26 @@ const data = [
 const downsampledData = downsampleData(data, "day");
 ```
 
-## Data Grouping
+### Data Grouping
 
 The function groups data based on the provided `timeUnit`. It calculates the average profit percentage for each time interval and returns a new array of objects containing timestamps and corresponding downsampled profit percentages.
 
-## Error Handling
+### Error Handling
 
 - If an entry has an invalid timestamp or is missing a timestamp, the function logs an error message to the console.
 
-## Supported Time Units
+### Supported Time Units
 
 - "day": Groups data by day.
 - "month": Groups data by month.
 - "week": Groups data by week (not implemented in the provided code).
 - "year": Groups data by year.
 
-## Output
+### Output
 
 The function returns an array of objects with downsampled data, each containing a timestamp and the corresponding downsampled profit percentage.
 
-## Example Output
+### Example Output
 
 ```javascript
 [
