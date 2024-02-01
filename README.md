@@ -67,6 +67,12 @@ npm install
 npm install tabler/icons-react axios react react-dom recharts
 ```
 
+To run the frontend, follow the steps below in the /client folder:
+
+```bash
+npm run dev
+```
+
 ### Backend Dependencies
 
 Make sure to install the following dependencies for the server (backend):
@@ -84,6 +90,12 @@ To install the backend dependencies, follow the steps below in the /server folde
 
 ```bash
 npm install axios cors dotenv express papaparse node
+```
+
+To run the backend, follow the steps below in the /server folder:
+
+```bash
+node server.js
 ```
 
 ### Frontend Structure
