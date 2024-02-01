@@ -25,7 +25,7 @@ const Graph = ({ dataset }) => {
   return (
     <div>
       <ResponsiveContainer
-        width="100%"
+        width="110%"
         height={200}
         style={{ marginLeft: -50, marginTop: 10 }}
       >
