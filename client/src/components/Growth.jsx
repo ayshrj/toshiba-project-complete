@@ -58,6 +58,25 @@ const Growth = ({ Title, boxHeightPercentage }) => {
     localStorage.setItem("selectedOption", selectedOption);
   }, [selectedDataset, selectedOption]);
 
+  const [loadingTime, setLoadingTime] = useState(0);
+
+  useEffect(() => {
+    let timer;
+
+    if (loading) {
+      // Start a timer when loading begins
+      timer = setInterval(() => {
+        setLoadingTime((prevTime) => prevTime + 1);
+      }, 1000);
+    }
+
+    return () => {
+      // Clear the timer when loading stops
+      clearInterval(timer);
+      setLoadingTime(0);
+    };
+  }, [loading]);
+
   return (
     <div
       className="growth"
@@ -261,10 +280,13 @@ const Growth = ({ Title, boxHeightPercentage }) => {
       {loading ? (
         <>
           <p>Loading...</p>
-          <p>
-            This may take a moment, as our backend is hosted on the free version
-            of render.com
-          </p>
+          {loadingTime > 10 && (
+            <p style={{ fontSize: "10px" }}>
+              {
+                "(This may take a moment, as our backend is hosted on the free version of render.com)"
+              }
+            </p>
+          )}
         </>
       ) : (
         <Graph dataset={datasets[selectedDataset]} />
