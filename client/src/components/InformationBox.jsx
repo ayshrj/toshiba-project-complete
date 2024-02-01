@@ -5,6 +5,7 @@ import {
   IconArrowDownRight,
   IconArrowNarrowRight,
 } from "@tabler/icons-react";
+import "./InformationBox.css";
 
 const InformationBox = ({
   Title,
@@ -48,9 +49,15 @@ const InformationBox = ({
       >
         {`${Percentage}%`}{" "}
         {Profit === 1 ? (
-          <IconArrowUpRight style={{ color: "#25CD25" }} />
+          <IconArrowUpRight
+            className="rotate-on-hover"
+            style={{ color: "#25CD25" }}
+          />
         ) : Profit === -1 ? (
-          <IconArrowDownRight style={{ color: "#FF0000" }} />
+          <IconArrowDownRight
+            className="rotate-on-hover"
+            style={{ color: "#FF0000" }}
+          />
         ) : (
           ""
         )}
