@@ -24,4 +24,5 @@
     padding-left: 10px; 
     transform: translateY(2px);
     color: #131313;
+    user-select: none;
 }
