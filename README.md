@@ -63,7 +63,7 @@ Make sure to install the following dependencies for the client (frontend):
 To install the frontend dependencies, follow the steps below in the /client folder:
 
 ```bash
-npx create vite@latest . -- --template react
+npm install
 npm install tabler/icons-react axios react react-dom recharts
 ```
 
