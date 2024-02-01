@@ -56,14 +56,12 @@ const TopStates = ({ title, topStates, boxHeightPercentage }) => {
           <div
             key={index}
             style={{
-              // Add key={index} here
               display: "flex",
               alignItems: "center",
               fontSize: "12px",
               marginLeft: "-12px",
             }}
           >
-            {/* Rest of your code */}
             <div
               style={{
                 width: `calc(100%*${state.profit / maxProfit})`,

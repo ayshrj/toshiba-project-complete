@@ -41,7 +41,7 @@ const Chats = ({ title, messages, boxHeightPercentage }) => {
                   backgroundColor: !message.read ? "#FFF7E8" : "",
                   borderRadius: "16px",
                   padding: "12px",
-                  marginRight: "8px", // Add margin to create space between elements
+                  marginRight: "8px",
                 }}
               >
                 <img
