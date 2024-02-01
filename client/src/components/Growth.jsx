@@ -27,19 +27,23 @@ const Growth = ({ Title, boxHeightPercentage }) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          `https://toshiba-project-backend.onrender.com/json/${selectedDataset}`
-        );
 
-        if (!response || !response.data) {
-          throw new Error("Failed to fetch data.");
+        if (datasets[selectedDataset].length === 0) {
+          const response = await axios.get(
+            `https://toshiba-project-backend.onrender.com/json/${selectedDataset}`
+          );
+
+          if (!response || !response.data) {
+            throw new Error("Failed to fetch data.");
+          }
+
+          const jsonData = response.data.data;
+          setDatasets((prevDatasets) => ({
+            ...prevDatasets,
+            [selectedDataset]: jsonData,
+          }));
         }
 
-        const jsonData = response.data.data;
-        setDatasets((prevDatasets) => ({
-          ...prevDatasets,
-          [selectedDataset]: jsonData,
-        }));
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -48,7 +52,8 @@ const Growth = ({ Title, boxHeightPercentage }) => {
     };
 
     fetchData();
-  }, [selectedDataset]);
+  }, [selectedDataset, datasets]);
+
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
