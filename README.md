@@ -32,6 +32,12 @@
      - [Error Handling](#error-handling)
      - [Supported Time Units](#supported-time-units)
      - [Output](#output)
+   - [Function: `getMaxProfitInfo`](#function-getmaxprofitinfo)
+     - [Parameters](#parameters-1)
+     - [Example Usage](#example-usage-1)
+     - [Functionality](#functionality)
+     - [Error Handling](#error-handling-1)
+     - [Output](#output-1)
 
 4. [Note](#note)
 
@@ -116,11 +122,11 @@ The frontend consists of 11 React components:
 
 6. **TopMonth.jsx**
 
-   - Linked to DashboardInfo.jsx for the top month
+   - Uses backend to pull dynamic data
 
 7. **TopYear.jsx**
 
-   - Linked to DashboardInfo.jsx for the top year
+   - Uses backend to pull dynamic data
 
 8. **TopBuyer.jsx**
 
@@ -178,6 +184,7 @@ The function groups data based on the provided `timeUnit`. It calculates the ave
 
 - "day": Groups data by day.
 - "month": Groups data by month.
+
 - "year": Groups data by year.
 
 ### Output
@@ -192,6 +199,51 @@ The function returns an array of objects with downsampled data, each containing 
   // ... more downsampled entries
 ];
 ```
+
+## Function: `getMaxProfitInfo`
+
+This JavaScript function analyzes an array of data points containing timestamps and profit percentages. Its purpose is to identify and retrieve the entry with the highest profit percentage.
+
+### Parameters
+
+- `data`: An array of data points, where each entry should have a `Timestamp` and `ProfitPercentage` property.
+
+### Example Usage
+
+```javascript
+const data = [
+  { Timestamp: "2022-01-01 12:00:00", ProfitPercentage: 30.8899991273 },
+  { Timestamp: "2022-01-01 14:30:00", ProfitPercentage: 28.2183913922 },
+  // ... more data entries
+];
+
+const maxProfitInfo = getMaxProfitInfo(data);
+```
+
+### Functionality
+
+The function iterates through the provided data and identifies the entry with the highest profit percentage. It returns an object containing the timestamp and corresponding maximum profit percentage.
+
+### Error Handling
+
+- If the provided data is not an array or is an empty array, the function returns `null`.
+
+### Output
+
+The function returns an object with information about the entry with the maximum profit percentage.
+
+### Example Output
+
+```javascript
+{
+  Timestamp: "2022-01-01 12:00:00",
+  ProfitPercentage: 30.8899991273,
+}
+```
+
+### Note
+
+- In case of ties, the function returns the first occurrence of the maximum profit percentage.
 
 ## Note
 
