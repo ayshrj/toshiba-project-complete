@@ -24,13 +24,13 @@ const customerData = [
     profilePic: Profile3,
     name: "Gael Harry",
     company: "New York Finest Fruits",
-    dateCreated: "2023-02-10",
+    dateCreated: "2023-06-10",
   },
   {
     profilePic: Profile4,
     name: "Maggie Johnson",
     company: "Oasis Organic Inc.",
-    dateCreated: "2023-03-22",
+    dateCreated: "2023-08-22",
   },
 ];
 
