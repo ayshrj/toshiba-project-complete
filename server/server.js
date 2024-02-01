@@ -72,7 +72,7 @@ function getMaxProfitInfo(data) {
   let maxProfitTimestamp = null;
 
   data.forEach((item) => {
-    if (item.ProfitPercentage > maxProfitPercentage) {
+    if (item.ProfitPercentage >= maxProfitPercentage) {
       maxProfitPercentage = item.ProfitPercentage;
       maxProfitTimestamp = item.Timestamp;
     }
