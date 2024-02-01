@@ -64,14 +64,12 @@ const Growth = ({ Title, boxHeightPercentage }) => {
     let timer;
 
     if (loading) {
-      // Start a timer when loading begins
       timer = setInterval(() => {
         setLoadingTime((prevTime) => prevTime + 1);
-      }, 1000);
+      }, 7000);
     }
 
     return () => {
-      // Clear the timer when loading stops
       clearInterval(timer);
       setLoadingTime(0);
     };
@@ -280,8 +278,8 @@ const Growth = ({ Title, boxHeightPercentage }) => {
       {loading ? (
         <>
           <p>Loading...</p>
-          {loadingTime > 10 && (
-            <p style={{ fontSize: "10px" }}>
+          {(loading || loadingTime > 10) && (
+            <p style={{ fontSize: "14px" }}>
               {
                 "(This may take a moment, as our backend is hosted on the free version of render.com)"
               }
