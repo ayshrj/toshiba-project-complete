@@ -30,7 +30,7 @@ const Growth = ({ Title, boxHeightPercentage }) => {
 
         if (datasets[selectedDataset].length === 0) {
           const response = await axios.get(
-            `https://toshiba-project-backend.onrender.com/json/${selectedDataset}`
+            `http://localhost:3000/json/${selectedDataset}`
           );
 
           if (!response || !response.data) {
@@ -71,7 +71,7 @@ const Growth = ({ Title, boxHeightPercentage }) => {
     if (loading) {
       timer = setInterval(() => {
         setLoadingTime((prevTime) => prevTime + 1);
-      }, 7000);
+      }, 1000);
     }
 
     return () => {
@@ -286,7 +286,7 @@ const Growth = ({ Title, boxHeightPercentage }) => {
           {loadingTime > 10 && (
             <p style={{ fontSize: "14px" }}>
               {
-                "(This may take a moment, as my backend is hosted on the free version of render.com)"
+                "(This may take a moment, as my backend is hosted on the free version of render.com, It spin down after periods of inactivity)"
               }
             </p>
           )}

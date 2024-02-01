@@ -114,14 +114,12 @@ const App = () => {
             <div style={{ display: "flex" }}>
               <TopMonth
                 Title="Top Month"
-                topMonth={topMonth}
                 boxHeightPercentage={
                   0.3 * windowHeight * secondRowHeightPercentage
                 }
               />
               <TopYear
                 Title="Top Year"
-                topYear={topYear}
                 boxHeightPercentage={
                   0.3 * windowHeight * secondRowHeightPercentage
                 }

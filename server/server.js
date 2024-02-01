@@ -60,14 +60,60 @@ function downsampleData(data, timeUnit) {
     delete groupedData[key].count;
   }
 
-  console.log(result);
   return result;
 }
+
+function getMaxProfitInfo(data) {
+  if (!Array.isArray(data) || data.length === 0) {
+    return null;
+  }
+
+  let maxProfitPercentage = Number.NEGATIVE_INFINITY;
+  let maxProfitTimestamp = null;
+
+  data.forEach((item) => {
+    if (item.ProfitPercentage > maxProfitPercentage) {
+      maxProfitPercentage = item.ProfitPercentage;
+      maxProfitTimestamp = item.Timestamp;
+    }
+  });
+
+  return {
+    Timestamp: maxProfitTimestamp,
+    ProfitPercentage: maxProfitPercentage,
+  };
+}
+
+let downsampledDataForDay = [];
+let downsampledDataForWeek = [];
+let downsampledDataForMonth = [];
+let downsampledDataForYear = [];
 
 app.get("/json/:timeUnit", (req, res) => {
   const timeUnit = req.params.timeUnit;
 
-  if (["day", "week", "month", "year"].includes(timeUnit)) {
+  let downsampledData;
+
+  switch (timeUnit) {
+    case "day":
+      downsampledData = downsampledDataForDay;
+      break;
+    case "week":
+      downsampledData = downsampledDataForWeek;
+      break;
+    case "month":
+      downsampledData = downsampledDataForMonth;
+      break;
+    case "year":
+      downsampledData = downsampledDataForYear;
+      break;
+  }
+
+  if (downsampledData && downsampledData.length !== 0) {
+    res.status(200).json({
+      data: downsampledData,
+    });
+  } else {
     axios
       .get(csvFileUrl)
       .then((response) => {
@@ -77,20 +123,23 @@ app.get("/json/:timeUnit", (req, res) => {
           header: true,
           complete: (result) => {
             const jsonData = result.data;
-            let downsampledData;
 
             switch (timeUnit) {
               case "day":
                 downsampledData = downsampleData(jsonData, "day");
+                downsampledDataForDay = downsampledData;
                 break;
               case "week":
                 downsampledData = downsampleData(jsonData, "week");
+                downsampledDataForWeek = downsampledData;
                 break;
               case "month":
                 downsampledData = downsampleData(jsonData, "month");
+                downsampledDataForMonth = downsampledData;
                 break;
               case "year":
                 downsampledData = downsampleData(jsonData, "year");
+                downsampledDataForYear = downsampledData;
                 break;
             }
 
@@ -108,8 +157,79 @@ app.get("/json/:timeUnit", (req, res) => {
         console.error("Error fetching CSV file:", error);
         res.status(500).send("Internal Server Error");
       });
+  }
+});
+
+app.get("/profitData/:timeUnit", (req, res) => {
+  const timeUnit = req.params.timeUnit;
+
+  let downsampledData;
+
+  switch (timeUnit) {
+    case "day":
+      downsampledData = downsampledDataForDay;
+      break;
+    case "week":
+      downsampledData = downsampledDataForWeek;
+      break;
+    case "month":
+      downsampledData = downsampledDataForMonth;
+      break;
+    case "year":
+      downsampledData = downsampledDataForYear;
+      break;
+  }
+
+  if (downsampledData && downsampledData.length !== 0) {
+    const maxProfit = getMaxProfitInfo(downsampledData);
+    res.status(200).json({
+      data: maxProfit,
+    });
   } else {
-    res.status(404).send("Not Found");
+    axios
+      .get(csvFileUrl)
+      .then((response) => {
+        const csvData = response.data;
+
+        Papa.parse(csvData, {
+          header: true,
+          complete: (result) => {
+            const jsonData = result.data;
+
+            switch (timeUnit) {
+              case "day":
+                downsampledData = downsampleData(jsonData, "day");
+                downsampledDataForDay = downsampledData;
+                break;
+              case "week":
+                downsampledData = downsampleData(jsonData, "week");
+                downsampledDataForWeek = downsampledData;
+                break;
+              case "month":
+                downsampledData = downsampleData(jsonData, "month");
+                downsampledDataForMonth = downsampledData;
+                break;
+              case "year":
+                downsampledData = downsampleData(jsonData, "year");
+                downsampledDataForYear = downsampledData;
+                break;
+            }
+
+            const maxProfit = getMaxProfitInfo(downsampledData);
+            res.status(200).json({
+              data: maxProfit,
+            });
+          },
+          error: (err) => {
+            console.error("Error parsing CSV:", err);
+            res.status(500).send("Internal Server Error");
+          },
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching CSV file:", error);
+        res.status(500).send("Internal Server Error");
+      });
   }
 });
 
