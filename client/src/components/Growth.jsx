@@ -30,7 +30,7 @@ const Growth = ({ Title, boxHeightPercentage }) => {
 
         if (datasets[selectedDataset].length === 0) {
           const response = await axios.get(
-            `http://localhost:3000/json/${selectedDataset}`
+            `https://toshiba-project-backend.onrender.com/json/${selectedDataset}`
           );
 
           if (!response || !response.data) {
