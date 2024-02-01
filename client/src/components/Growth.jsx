@@ -259,7 +259,13 @@ const Growth = ({ Title, boxHeightPercentage }) => {
         )}
       </div>
       {loading ? (
-        <p>Loading...</p>
+        <>
+          <p>Loading...</p>
+          <p>
+            This may take a moment, as our backend is hosted on the free version
+            of render.com
+          </p>
+        </>
       ) : (
         <Graph dataset={datasets[selectedDataset]} />
       )}
