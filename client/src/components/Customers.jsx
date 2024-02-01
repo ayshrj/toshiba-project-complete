@@ -29,23 +29,47 @@ const Customers = ({
     setHoveringOverAplhabeticallyOption,
   ] = useState(false);
 
-  function sortByDateCreated(data, descending = true) {
-    return data.sort((a, b) => {
+  const [selectedCustomerIndex, setSelectedCustomerIndex] = useState(1);
+
+  function sortByDateCreated(descending = false) {
+    const sortedData = [...data];
+
+    sortedData.sort((a, b) => {
       const dateA = new Date(a.dateCreated);
       const dateB = new Date(b.dateCreated);
       return descending ? dateB - dateA : dateA - dateB;
     });
+
+    for (let i = 0; i < sortedData.length; ++i) {
+      if (sortedData[i].profilePic === data[selectedCustomerIndex].profilePic) {
+        setSelectedCustomerIndex(i);
+        break;
+      }
+    }
+    setData(sortedData);
   }
 
-  function sortByName(data) {
-    return data.sort((a, b) => a.name.localeCompare(b.name));
+  function sortByName() {
+    const sortedData = [...data];
+
+    sortedData.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+
+    for (let i = 0; i < sortedData.length; ++i) {
+      if (sortedData[i].profilePic === data[selectedCustomerIndex].profilePic) {
+        setSelectedCustomerIndex(i);
+        break;
+      }
+    }
+
+    setData(sortedData);
   }
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
 
-  const [selectedCustomerIndex, setSelectedCustomerIndex] = useState(1);
   return (
     <>
       <div
@@ -127,7 +151,7 @@ const Customers = ({
                         : ""
                     }
                     onClick={() => {
-                      setData(sortByDateCreated(data, false)),
+                      sortByDateCreated(false),
                         setSelectedOption("Sort By Newest"),
                         setDropdownOpen(false);
                       setHoveringOverNewestOption(false);
@@ -157,7 +181,7 @@ const Customers = ({
                         : ""
                     }
                     onClick={() => {
-                      setData(sortByDateCreated(data, true)),
+                      sortByDateCreated(true),
                         setSelectedOption("Sort By Oldest"),
                         setDropdownOpen(false);
                       setHoveringOverOldestOption(false);
@@ -187,7 +211,7 @@ const Customers = ({
                         : ""
                     }
                     onClick={() => {
-                      setData(sortByName(data)),
+                      sortByName(),
                         setSelectedOption("Sort Alphabetically"),
                         setDropdownOpen(false);
                       setHoveringOverAplhabeticallyOption(false);
@@ -217,7 +241,7 @@ const Customers = ({
           className="customer-selectable"
           style={{ position: "relative", paddingTop: 20, cursor: "pointer" }}
         >
-          {customerData.map((customer, index) => (
+          {data.map((customer, index) => (
             <div
               key={index}
               className="single-customer"
