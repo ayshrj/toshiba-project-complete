@@ -9,7 +9,7 @@ const TopYear = ({ Title, boxHeightPercentage }) => {
       setTopYearExtracted(null);
       try {
         const response = await axios.get(
-          `http://localhost:3000/profitData/year`
+          `https://toshiba-project-backend.onrender.com/profitData/year`
         );
 
         if (!response || !response.data) {

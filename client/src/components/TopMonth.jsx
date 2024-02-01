@@ -9,7 +9,7 @@ const TopMonth = ({ Title, boxHeightPercentage }) => {
       setTopMonthExtracted(null);
       try {
         const response = await axios.get(
-          `http://localhost:3000/profitData/month`
+          `https://toshiba-project-backend.onrender.com/profitData/month`
         );
 
         if (!response || !response.data) {
