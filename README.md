@@ -1,5 +1,40 @@
 # Toshiba Assignment - React Dashboard
 
+## Index
+
+1. [Overview](#overview)
+
+   - [Deployment Links](#deployment-links)
+   - [Frontend Dependencies](#frontend-dependencies)
+   - [Backend Dependencies](#backend-dependencies)
+   - [Installation Steps](#installation-steps)
+
+2. [Frontend Structure](#frontend-structure)
+
+   - [Menu.jsx](#menujsx)
+   - [InformationBox.jsx](#informationboxjsx)
+   - [QuarterGoal.jsx](#quartergoaljsx)
+   - [Customers.jsx](#customersjsx)
+   - [Growth.jsx](#growthjsx)
+   - [TopMonth.jsx](#topmonthjsx)
+   - [TopYear.jsx](#topyearjsx)
+   - [TopBuyer.jsx](#topbuyerjsx)
+   - [Chats.jsx](#chatsjsx)
+   - [TopStates.jsx](#topstatesjsx)
+   - [NewDeals.jsx](#newdealsjsx)
+
+3. [Backend Structure](#backend-structure)
+
+   - [Function: `downsampleData`](#function-downsampledata)
+     - [Parameters](#parameters)
+     - [Example Usage](#example-usage)
+     - [Data Grouping](#data-grouping)
+     - [Error Handling](#error-handling)
+     - [Supported Time Units](#supported-time-units)
+     - [Output](#output)
+
+4. [Note](#note)
+
 ## Overview
 
 This project is a React-based dashboard application for Toshiba, consisting of both frontend and backend components. The frontend provides a user interface with various components displaying information and statistics, while the backend handles data processing and serves it to the frontend.
