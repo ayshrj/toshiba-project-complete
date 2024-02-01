@@ -8,7 +8,7 @@ const Growth = ({ Title, boxHeightPercentage }) => {
   const storedOption = localStorage.getItem("selectedOption") || "Month";
 
   const [data, setData] = useState("Month.csv");
-  const [isDropdownOpen, setDropdownOpen] = useState(true);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(storedOption);
   const [hoveringOverDayOption, setHoveringOverDayOption] = useState(false);
   const [hoveringOverMonthOption, setHoveringOverMonthOption] = useState(false);
