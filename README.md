@@ -110,6 +110,55 @@ The frontend consists of 11 React components:
 
 The backend server pulls a dataset in CSV format from a raw GitHub link, uses `papaparse` to parse the CSV to JSON, and serves the data to the frontend. The server includes a function called `downsampleData(data, timeUnit)` for downsampling data by grouping it based on the specified time unit and calculating the mean. Proper error handling is implemented to provide accurate status responses.
 
+# Function: `downsampleData`
+
+This JavaScript function takes an array of data points with timestamps and profit percentages and groups them based on a specified time unit. The purpose of this function is to downsample the data, aggregating profit percentages over specified time intervals.
+
+## Parameters
+
+- `data`: An array of data points, where each entry should have a `Timestamp` and `ProfitPercentage` property.
+- `timeUnit`: A string specifying the time unit for grouping the data. Supported values are "day," "month," and "year."
+
+## Example Usage
+
+```javascript
+const data = [
+  { Timestamp: "2022-01-01 12:00:00", ProfitPercentage: 30.8899991273 },
+  { Timestamp: "2022-01-01 14:30:00", ProfitPercentage: 28.2183913922 },
+  // ... more data entries
+];
+
+const downsampledData = downsampleData(data, "day");
+```
+
+## Data Grouping
+
+The function groups data based on the provided `timeUnit`. It calculates the average profit percentage for each time interval and returns a new array of objects containing timestamps and corresponding downsampled profit percentages.
+
+## Error Handling
+
+- If an entry has an invalid timestamp or is missing a timestamp, the function logs an error message to the console.
+
+## Supported Time Units
+
+- "day": Groups data by day.
+- "month": Groups data by month.
+- "week": Groups data by week (not implemented in the provided code).
+- "year": Groups data by year.
+
+## Output
+
+The function returns an array of objects with downsampled data, each containing a timestamp and the corresponding downsampled profit percentage.
+
+## Example Output
+
+```javascript
+[
+  { Timestamp: "2022-01-01", ProfitPercentage: 227.1928381293 },
+  // ... more downsampled entries
+];
+```
+
 ### Note
 
 - The project is mostly static except for the Growth component, which pulls data from the backend hosted on render.com.
