@@ -312,7 +312,7 @@ const Menu = ({ menuIsCollapsed, setMenuIsCollapsed }) => {
             <div className="left-side-button-label">Settings</div>
           )}
         </div>
-        <div className="left-side-button" style={{ paddingBottom: "30px" }}>
+        <div className="left-side-button" style={{ paddingBottom: "14px" }}>
           <IconLogout
             className="left-side-button-icon"
             style={{ color: "#B01212" }}
