@@ -178,7 +178,6 @@ The function groups data based on the provided `timeUnit`. It calculates the ave
 
 - "day": Groups data by day.
 - "month": Groups data by month.
-- "week": Groups data by week (not implemented in the provided code).
 - "year": Groups data by year.
 
 ### Output
