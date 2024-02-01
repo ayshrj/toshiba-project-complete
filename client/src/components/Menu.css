@@ -10,6 +10,9 @@
     padding-left: 10px;
     cursor: pointer;
 }
+.submenu{
+    padding-left: 30px;
+}
 
 .left-side-button-icon{
     color: #7D7D7D;

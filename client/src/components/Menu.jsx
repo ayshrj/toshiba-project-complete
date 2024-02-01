@@ -17,12 +17,17 @@ import {
   IconChevronLeft,
   IconChevronRight,
   IconChevronDown,
+  IconChevronUp,
+  IconUserPlus,
+  IconShoppingCart,
+  IconHistory,
 } from "@tabler/icons-react";
 import WindowHeightCalculator from "./Utilities/WindowHeightCalculator";
 import "./Menu.css";
 
 const Menu = ({ menuIsCollapsed, setMenuIsCollapsed }) => {
   const { windowHeight } = WindowHeightCalculator();
+  const [isCustomersButtonOpen, setIsCustomersButtonOpen] = useState(false);
 
   return (
     <div
@@ -80,7 +85,7 @@ const Menu = ({ menuIsCollapsed, setMenuIsCollapsed }) => {
                 width: "calc(100% - 80px)",
                 height: "50%",
                 borderRadius: "50px",
-                padding: "12px 40px 12px 40px", // Adjusted padding to accommodate the icon
+                padding: "12px 40px 12px 40px",
                 border: "1px solid #F1F1F1",
               }}
               id="search-button"
@@ -108,7 +113,13 @@ const Menu = ({ menuIsCollapsed, setMenuIsCollapsed }) => {
             <div className="left-side-button-label">Dashboard</div>
           )}
         </div>
-        <div className="left-side-button">
+        <div
+          className="left-side-button"
+          onClick={() => {
+            if (!menuIsCollapsed)
+              setIsCustomersButtonOpen(!isCustomersButtonOpen);
+          }}
+        >
           <IconUsers
             className="left-side-button-icon"
             onClick={() => {
@@ -118,11 +129,55 @@ const Menu = ({ menuIsCollapsed, setMenuIsCollapsed }) => {
           {!menuIsCollapsed && (
             <div className="left-side-button-label">Customers</div>
           )}
-          <IconChevronDown
-            className="left-side-button-icon"
-            style={{ marginLeft: "auto" }}
-          />
+          {isCustomersButtonOpen ? (
+            <IconChevronUp
+              className="left-side-button-icon"
+              style={{ marginLeft: "auto" }}
+            />
+          ) : (
+            <IconChevronDown
+              className="left-side-button-icon"
+              style={{ marginLeft: "auto" }}
+            />
+          )}
         </div>
+        {isCustomersButtonOpen && (
+          <>
+            <div className="left-side-button submenu">
+              <IconUserPlus
+                className="left-side-button-icon"
+                onClick={() => {
+                  setMenuIsCollapsed(false);
+                }}
+              />
+              {!menuIsCollapsed && (
+                <div className="left-side-button-label">Add New Customer</div>
+              )}
+            </div>{" "}
+            <div className="left-side-button submenu">
+              <IconShoppingCart
+                className="left-side-button-icon"
+                onClick={() => {
+                  setMenuIsCollapsed(false);
+                }}
+              />
+              {!menuIsCollapsed && (
+                <div className="left-side-button-label">Customer Orders</div>
+              )}
+            </div>
+            <div className="left-side-button submenu">
+              <IconHistory
+                className="left-side-button-icon"
+                onClick={() => {
+                  setMenuIsCollapsed(false);
+                }}
+              />
+              {!menuIsCollapsed && (
+                <div className="left-side-button-label">Customer History</div>
+              )}
+            </div>
+          </>
+        )}
         <div className="left-side-button">
           <IconClipboardData
             className="left-side-button-icon"
@@ -203,6 +258,7 @@ const Menu = ({ menuIsCollapsed, setMenuIsCollapsed }) => {
               cursor: "pointer",
             }}
             onClick={() => {
+              if (menuIsCollapsed === true) setIsCustomersButtonOpen(false);
               setMenuIsCollapsed(!menuIsCollapsed);
             }}
           >
